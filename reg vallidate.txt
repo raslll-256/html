@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Registration Form</title>
+</head>
+<body bgcolor="teal">
+<center>
+<h3>STUDENT REGISTRATION FORM</h3>
+</center>
+<form method="POST" onsubmit="return validateForm()">
+<table align="center">
+<tr>
+<td><label>NAME</label></td>
+<td><input type="text" name="name" id="name"></td>
+</tr>
+<tr>
+<td><label>EMAIL</label></td>
+<td><input type="email" name="email" id="email"></td>
+</tr>
+<tr>
+<td><label>PASSWORD</label></td>
+<td><input type="password" name="password" id="password"></td>
+</tr>
+<tr>
+<td><label>AGE</label></td>
+<td><input type="number" name="age" id="age"></td>
+</tr>
+<tr>
+<td><label>GENDER</label></td>
+<td>
+<input type="radio" name="gender" value="male"> MALE
+<input type="radio" name="gender" value="female"> FEMALE
+</td>
+</tr>
+<tr>
+<td><label>COURSE</label></td>
+<td>
+<select name="course">
+<option>MCA</option>
+<option>MBA</option>
+<option>M.TECH</option>
+<option>BCA</option>
+</select>
+</td>
+</tr>
+<tr>
+<td><label>HOBBIES</label></td>
+<td>
+<input type="checkbox" name="hobby" value="reading"> READING
+<input type="checkbox" name="hobby" value="sports"> SPORTS
+<input type="checkbox" name="hobby" value="music"> MUSIC
+<input type="checkbox" name="hobby" value="travelling"> TRAVELLING
+</td>
+</tr>
+<tr>
+<td><label>ADDRESS</label></td>
+<td>
+<textarea name="address" rows="4" cols="30" id="address"></textarea>
+</td>
+</tr>
+<tr>
+<td><label>DOB</label></td>
+<td><input type="date" name="dob" id="dob"></td>
+</tr>
+<tr>
+<td></td>
+<td>
+<input type="submit" value="Register">
+<input type="reset" value="Clear">
+</td>
+</tr>
+</table>
+</form>
+<script>
+function validateForm()
+{
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+var password = document.getElementById("password").value;
+var age = document.getElementById("age").value;
+var gender = document.getElementsByName("gender");
+var course = document.getElementsByName("course")[0].value;
+var hobby = document.getElementsByName("hobby");
+var address = document.getElementById("address").value;
+var dob = document.getElementById("dob").value;
+var msg = "";
+var selected = false;
+var genderSelected = false;
+if(name == "")
+{
+msg += "ENTER YOUR NAME\n";
+}
+if(email == "")
+{
+msg += "ENTER YOUR EMAIL\n";
+}
+if(password == "")
+{
+msg += "ENTER YOUR PASSWORD\n";
+}
+if(age == "")
+{
+msg += "ENTER YOUR AGE\n";
+}
+if(course == "")
+{
+msg += "ENTER YOUR COURSE\n";
+}
+if(address == "")
+{
+msg += "ENTER YOUR ADDRESS\n";
+}
+if(dob == "")
+{
+msg += "ENTER YOUR DOB\n";
+}
+for(var i = 0; i < hobby.length; i++)
+{
+if(hobby[i].checked)
+{
+selected = true;
+}
+}
+if(selected == false)
+{
+msg += "SELECT AT LEAST ONE HOBBY\n";
+}
+for(var i = 0; i < gender.length; i++)
+{
+if(gender[i].checked)
+{
+genderSelected = true;
+}
+}
+if(genderSelected == false)
+{
+msg += "ENTER YOUR GENDER\n";
+}
+if(msg != "")
+{
+alert(msg);
+return false;
+}
+else
+{
+alert("REGISTRATION SUCCESSFUL");
+return true;
+}
+}
+</script>
+</body>
+</html>
